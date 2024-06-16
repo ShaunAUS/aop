@@ -1,6 +1,7 @@
 package com.example.aop;
 
 import com.example.aop.order.aop.AspectV2;
+import com.example.aop.order.aop.AspectV3;
 import org.apache.logging.log4j.message.AsynchronouslyFormattable;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @SpringBootTest
-@Import(AspectV2.class)
+@Import(AspectV3.class)
 public class AopTest {
 
     @Autowired
