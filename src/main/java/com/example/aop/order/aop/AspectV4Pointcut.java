@@ -4,30 +4,18 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
 
-// 설정후 꼭 SpringBean 으로 등록 해줘야함!!!!!!!!!!!!!!!!!
 @Slf4j
 @Aspect
-public class AspectV3 {
-
-    //example.aop.order 패키지
-    @Pointcut("execution(* com.example.aop.order..*.*(..))") // AOP 대상 설정
-    private void allOrder() {}// pointcut signature
-
-    //클래스 이름 패턴이 *Service
-    @Pointcut("execution(* *..*Service.*(..))") // AOP 대상 설정
-    private void allService() {}// pointcut signature
-
-
-    @Around("allOrder()") // AOP 대상 설정
+public class AspectV4Pointcut {
+    @Around("com.example.aop.order.aop.Pointcuts.allOrder()") // AOP 대상 설정
     public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("[log] {}", joinPoint.getSignature()); // join point 시그니처
         return joinPoint.proceed();
     }
 
     //example.aop.order 패키지 아래에 있으면서 + 클래스 이름 패턴이 *Service 포인트컷 설정
-    @Around("allOrder() && allService()")
+    @Around("com.example.aop.order.aop.Pointcuts.orderServiceAndService()")
     public Object doTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
 
         try {
@@ -42,4 +30,5 @@ public class AspectV3 {
             log.info("[리소스 릴리즈] {}", joinPoint.getSignature());
         }
     }
+
 }
