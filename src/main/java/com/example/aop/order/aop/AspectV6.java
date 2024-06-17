@@ -56,6 +56,7 @@ public class AspectV6 {
     }
 
 
+    //throwing 에 사용된 이름으 어드바이스 메서드의 매개변수 이름과 일치해야함
     @AfterThrowing(value = "com.example.aop.order.aop.Pointcuts.orderServiceAndService()", throwing = "exception")
     public void doAfterThrowing(JoinPoint joinPoint, Exception exception) {
         log.info("[Exception] {} message ={}", joinPoint.getSignature(), exception.getMessage());
