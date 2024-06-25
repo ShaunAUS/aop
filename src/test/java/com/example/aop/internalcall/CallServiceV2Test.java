@@ -1,5 +1,6 @@
-package com.example.internalcall;
+package com.example.aop.internalcall;
 
+import com.example.internalcall.CallServiceV2;
 import com.example.internalcall.aop.CallLogAspect;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
